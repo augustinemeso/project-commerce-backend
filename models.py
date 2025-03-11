@@ -1,34 +1,26 @@
-
-from extensions import db
 from datetime import datetime
+from extensions import db
 class User(db.Model):
     __tablename__ = 'users'
     
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), unique=True, nullable=False, index=True)
     email = db.Column(db.String(120), unique=True, nullable=False, index=True)
-    password_hash = db.Column(db.String(128), nullable=False)
+    password = db.Column(db.String(128), nullable=False)
     first_name = db.Column(db.String(64))
     last_name = db.Column(db.String(64))
     is_active = db.Column(db.Boolean, default=True)
     is_admin = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
-    
+    password = db.Column(db.String(128), nullable=False)
+
+
     # Relationships
     addresses = db.relationship('Address', backref='user', lazy='dynamic', cascade='all, delete-orphan')
     orders = db.relationship('Order', backref='user', lazy='dynamic')
     reviews = db.relationship('Review', backref='user', lazy='dynamic')
     cart_items = db.relationship('CartItem', backref='user', lazy='dynamic', cascade='all, delete-orphan')
-    
-    def set_password(self, password):
-        self.password_hash = generate_password_hash(password)
-        
-    def check_password(self, password):
-        return check_password_hash(self.password_hash, password)
-    
-    def __repr__(self):
-        return f'<User {self.username}>'
 
 
 class Product(db.Model):
@@ -52,9 +44,6 @@ class Product(db.Model):
     reviews = db.relationship('Review', backref='product', lazy='dynamic')
     cart_items = db.relationship('CartItem', backref='product', lazy='dynamic')
     images = db.relationship('ProductImage', backref='product', lazy='dynamic', cascade='all, delete-orphan')
-    
-    def __repr__(self):
-        return f'<Product {self.name}>'
 
 
 class Address(db.Model):
@@ -71,9 +60,6 @@ class Address(db.Model):
     
     # Foreign keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    
-    def __repr__(self):
-        return f'<Address {self.street}, {self.city}>'
 
 
 class Category(db.Model):
@@ -85,9 +71,6 @@ class Category(db.Model):
     
     # Relationships
     products = db.relationship('Product', backref='category', lazy='dynamic')
-    
-    def __repr__(self):
-        return f'<Category {self.name}>'
 
 
 class Order(db.Model):
@@ -109,9 +92,6 @@ class Order(db.Model):
     order_items = db.relationship('OrderItem', backref='order', lazy='dynamic', cascade='all, delete-orphan')
     shipping_address = db.relationship('Address', foreign_keys=[shipping_address_id])
     billing_address = db.relationship('Address', foreign_keys=[billing_address_id])
-    
-    def __repr__(self):
-        return f'<Order {self.order_number}>'
 
 
 class OrderItem(db.Model):
@@ -124,9 +104,6 @@ class OrderItem(db.Model):
     # Foreign keys
     order_id = db.Column(db.Integer, db.ForeignKey('orders.id'), nullable=False)
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)
-    
-    def __repr__(self):
-        return f'<OrderItem {self.id}>'
 
 
 class Review(db.Model):
@@ -140,9 +117,6 @@ class Review(db.Model):
     # Foreign keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)
-    
-    def __repr__(self):
-        return f'<Review {self.id}>'
 
 
 class CartItem(db.Model):
@@ -155,9 +129,6 @@ class CartItem(db.Model):
     # Foreign keys
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)
-    
-    def __repr__(self):
-        return f'<CartItem {self.id}>'
 
 
 class ProductImage(db.Model):
@@ -170,6 +141,3 @@ class ProductImage(db.Model):
     
     # Foreign keys
     product_id = db.Column(db.Integer, db.ForeignKey('products.id'), nullable=False)
-    
-    def __repr__(self):
-        return f'<ProductImage {self.id}>'

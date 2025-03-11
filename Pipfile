@@ -10,6 +10,11 @@ flask-migrate = "*"
 flask-jwt-extended = "*"
 python-dotenv = "*"
 werkzeug = "*"
+alembic = "*"
+psycopg2 = "*"
+cors = "*"
+flask-cors = "*"
+flask-bcrypt = "*"
 
 [dev-packages]
 
