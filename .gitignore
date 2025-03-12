@@ -1,0 +1,95 @@
+# Ignore the virtual environment
+venv/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore environment variables and secrets
+.env
+*.env
+
+# Ignore database files
+*.sqlite3
+
+# Ignore logs
+logs/
+*.log
+# Ignore the virtual environment
+venv/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore environment variables and secrets
+.env
+*.env
+
+# Ignore database files
+*.sqlite3
+
+# Ignore logs
+logs/
+*.log
+# Ignore the virtual environment
+venv/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore environment variables and secrets
+.env
+*.env
+
+# Ignore database files
+*.sqlite3
+
+# Ignore logs
+logs/
+*.log
+# Ignore the virtual environment
+venv/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore environment variables and secrets
+.env
+*.env
+
+# Ignore database files
+*.sqlite3
+
+# Ignore logs
+logs/
+*.log
+# Ignore the virtual environment
+venv/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore environment variables and secrets
+.env
+*.env
+
+# Ignore database files
+*.sqlite3
+
+# Ignore logs
+logs/
+*.log
