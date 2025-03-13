@@ -7,7 +7,9 @@
 alembic==1.15.1
     # via flask-migrate
 bcrypt==4.3.0
-    # via -r requirements.in
+    # via
+    #   -r requirements.in
+    #   flask-bcrypt
 blinker==1.9.0
     # via
     #   -r requirements.in
@@ -26,11 +28,14 @@ dotenv==0.9.9
 flask==3.1.0
     # via
     #   -r requirements.in
+    #   flask-bcrypt
     #   flask-cors
     #   flask-jwt-extended
     #   flask-marshmallow
     #   flask-migrate
     #   flask-sqlalchemy
+flask-bcrypt==1.0.1
+    # via -r requirements.in
 flask-cors==5.0.1
     # via -r requirements.in
 flask-jwt-extended==4.7.1

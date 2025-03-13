@@ -4,6 +4,7 @@ build
 click   
 dotenv
 Flask  
+flask_bcrypt
 flask_cors  
 Flask-JWT-Extended  
 flask-marshmallow  
